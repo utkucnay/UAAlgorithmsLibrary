@@ -9,7 +9,7 @@ namespace UA.Algorithm
     {
         public static int IsSortedUntil<T>(this IEnumerable<T> values, Comparer<T> comparer)
         {
-            int result = 0;
+            int result = 1;
             var nIter = values.GetEnumerator();
             var pIter = values.GetEnumerator();
 
@@ -20,6 +20,7 @@ namespace UA.Algorithm
             {
                 if(comparer.Compare(pIter.Current, nIter.Current) < 0)
                 {
+                    pIter.MoveNext();
                     result++;
                 }
                 else
