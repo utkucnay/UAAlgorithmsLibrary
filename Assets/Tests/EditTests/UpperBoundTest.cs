@@ -19,8 +19,8 @@ public class UpperBoundTest
     [Test]
     public void TestUpperBound()
     {
-        var list = new List<int>() {1, 2, 1, 4, 5};
-        var index = list.UpperBound(2, Comparer<int>.Default);
-        Assert.AreEqual(3, index);
+        var list = new List<int>() {1, 1, 2, 2, 4, 5};
+        var index = list.UpperBound(3, Comparer<int>.Default);
+        Assert.AreEqual(4, index);
     }
 }

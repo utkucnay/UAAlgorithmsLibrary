@@ -97,4 +97,19 @@ public class NextPermutationTest
             Assert.Fail();
         }
     }
+
+    [Test]
+    public void TestNextPermutation7()
+    {
+        List<int> per = new List<int>() {1, 2, 3, 4};
+        IEnumerable<int> ints;
+        if(per.NextPermutation(out ints))
+        {
+            Assert.AreEqual(new List<int>() {1, 2, 4, 3}, ints.ToList());
+        }
+        else
+        {
+            Assert.Fail();
+        }
+    }
 }
