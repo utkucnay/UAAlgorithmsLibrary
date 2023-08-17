@@ -6,110 +6,111 @@ using System.Linq;
 
 public class NextPermutationTest
 {
-    // A Test behaves as an ordinary method
     [Test]
-    public void TestNextPermutation1()
+    public void TestNextPermutation_NormalCase()
     {
-        List<int> per = new List<int>() {1, 2, 3};
-        IEnumerable<int> ints;
-        if(per.NextPermutation(out ints))
-        {
-            Assert.AreEqual(new List<int>() {1, 3, 2}, ints.ToList());
-        }
-        else
-        {
-            Assert.Fail();
-        }
-    }
+        int[] array = { 1, 2, 3 };
+        int[] nextPermutation = { 1, 3, 2 };
 
-    // A Test behaves as an ordinary method
-    [Test]
-    public void TestNextPermutation2()
-    {
-        List<int> per = new List<int>() {1, 3, 2};
-        IEnumerable<int> ints;
-        if(per.NextPermutation(out ints))
+        IEnumerable<int> result;
+        if(array.NextPermutation(out result))
         {
-            Assert.AreEqual(new List<int>() {2, 1, 3}, ints.ToList());
-        }
-        else
-        {
-            Assert.Fail();
-        }
-    }
-
-    // A Test behaves as an ordinary method
-    [Test]
-    public void TestNextPermutation3()
-    {
-        List<int> per = new List<int>() {2, 1, 3};
-        IEnumerable<int> ints;
-        if(per.NextPermutation(out ints))
-        {
-            Assert.AreEqual(new List<int>() {2, 3, 1}, ints.ToList());
-        }
-        else
-        {
-            Assert.Fail();
-        }
-    }
-
-    // A Test behaves as an ordinary method
-    [Test]
-    public void TestNextPermutation4()
-    {
-        List<int> per = new List<int>() {2, 3, 1};
-        IEnumerable<int> ints;
-        if(per.NextPermutation(out ints))
-        {
-            Assert.AreEqual(new List<int>() {3, 1, 2}, ints.ToList());
-        }
-        else
-        {
-            Assert.Fail();
-        }
-    }
-
-    // A Test behaves as an ordinary method
-    [Test]
-    public void TestNextPermutation5()
-    {
-        List<int> per = new List<int>() {3, 1, 2};
-        IEnumerable<int> ints;
-        if(per.NextPermutation(out ints))
-        {
-            Assert.AreEqual(new List<int>() {3, 2, 1}, ints.ToList());
-        }
-        else
-        {
-            Assert.Fail();
-        }
-    }
-
-    // A Test behaves as an ordinary method
-    [Test]
-    public void TestNextPermutation6()
-    {
-        List<int> per = new List<int>() {3, 2, 1};
-        IEnumerable<int> ints;
-        if(per.NextPermutation(out ints))
-        {
-            Assert.Fail();
+            Assert.AreEqual(result.ToArray(), nextPermutation);
         }
     }
 
     [Test]
-    public void TestNextPermutation7()
+    public void TestNextPermutation_ReverseOrder()
     {
-        List<int> per = new List<int>() {1, 2, 3, 4};
-        IEnumerable<int> ints;
-        if(per.NextPermutation(out ints))
+        int[] array = { 3, 2, 1 };
+        int[] nextPermutation = { 1, 2, 3 };
+
+        IEnumerable<int> result;
+        if(array.NextPermutation(out result))
         {
-            Assert.AreEqual(new List<int>() {1, 2, 4, 3}, ints.ToList());
+            Assert.AreEqual(result.ToArray(), nextPermutation);
+        }
+    }
+
+    [Test]
+    public void TestNextPermutation_SameValues()
+    {
+        int[] array = { 1, 1, 1 };
+        int[] nextPermutation = { 1, 1, 1 };
+
+        IEnumerable<int> result;
+        if(array.NextPermutation(out result))
+        {
+            Assert.AreEqual(result.ToArray(), nextPermutation);
+        }
+    }
+
+    [Test]
+    public void TestNextPermutation_EmptyArray()
+    {
+        int[] array = { };
+        int[] nextPermutation = { };
+
+        IEnumerable<int> result;
+        if(array.NextPermutation(out result))
+        {
+            Assert.AreEqual(result.ToArray(), nextPermutation);
+        }
+    }
+
+    [Test]
+    public void TestNextPermutation_SingleValue()
+    {
+        int[] array = { 42 };
+        int[] nextPermutation = { 42 };
+
+        IEnumerable<int> result;
+        if(array.NextPermutation(out result))
+        {
+            Assert.AreEqual(result.ToArray(), nextPermutation);
         }
         else
         {
-            Assert.Fail();
+            Assert.AreEqual(result.ToArray(), nextPermutation);
+        }
+    }
+
+    [Test]
+    public void TestNextPermutation_LargeArray()
+    {
+        int[] array = Enumerable.Range(1, 10).ToArray();
+        int[] nextPermutation = new int[]{1,2,3,4,5,6,7,8,10,9};
+
+        IEnumerable<int> result;
+        if(array.NextPermutation(out result))
+        {
+            Assert.AreEqual(result.ToArray(), nextPermutation);
+        }
+    }
+
+    [Test]
+    public void TestNextPermutation_NegativeValues()
+    {
+        int[] array = { -3, -1, -2 };
+        int[] nextPermutation = { -2, -3, -1 };
+
+        IEnumerable<int> result;
+        if(array.NextPermutation(out result))
+        {
+            Assert.AreEqual(result.ToArray(), nextPermutation);
+        }
+    }
+
+    [Test]
+    public void TestNextPermutation_Characters()
+    {
+        char[] array = { 'a', 'b', 'c' };
+        char[] nextPermutation = { 'a', 'c', 'b' };
+
+        IEnumerable<char> result;
+        if(array.NextPermutation(out result))
+        {
+            Assert.AreEqual(result.ToArray(), nextPermutation);
         }
     }
 }

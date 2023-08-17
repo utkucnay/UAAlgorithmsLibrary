@@ -13,8 +13,14 @@ namespace UA.Algorithm
             var iter1 = sorted1.GetEnumerator();
             var iter2 = sorted2.GetEnumerator();
 
-            iter1.MoveNext();
-            iter2.MoveNext();
+            if(!iter1.MoveNext())
+            {
+                return result;
+            }
+            if(!iter2.MoveNext())
+            {
+                return result;
+            }
 
             while (true)
             {

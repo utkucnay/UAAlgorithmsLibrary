@@ -9,6 +9,7 @@ namespace UA.Algorithm
     {
         public static int IsSortedUntil<T>(this IEnumerable<T> values, Comparer<T> comparer)
         {
+            if(values.Count() == 0) return 0;
             int result = 1;
             var nIter = values.GetEnumerator();
             var pIter = values.GetEnumerator();
